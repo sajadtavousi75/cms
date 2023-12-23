@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face{
+    font-family:quickbold;
+    src: url(./fonts/Quicksand-Bold.ttf);
+}
+@font-face{
+    font-family:quickreg;
+    src: url(./fonts/Quicksand-Regular.ttf);
+}
