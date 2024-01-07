@@ -1,0 +1,18 @@
+.MuiTablePagination-root {
+    color: white !important;
+}
+
+.MuiDataGrid-columnHeaders {
+    border-color: #FF4081 !important;
+}
+.MuiDataGrid-cell {
+    border-color: #FF4081 !important;
+}
+.MuiDataGrid-footerContainer  {
+    border-color: #FF4081 !important;
+}
+
+.MuiBox-root {
+    border-radius: 10px !important;
+}
+

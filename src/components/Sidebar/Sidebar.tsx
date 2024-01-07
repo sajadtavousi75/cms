@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Sidebar() {
   return (
-    <div className="sidebar flex flex-col items-start pt-5 fixed">
+    <div className="sidebar flex flex-col items-center justify-center  pt-5 fixed">
       <div className="profile flex items-center flex-col">
         <img
           className="w-[100px] h-[100px] rounded-full"

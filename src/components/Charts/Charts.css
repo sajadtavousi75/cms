@@ -1,0 +1,35 @@
+
+/* .df{
+    background: rgb(0,121,151);
+    background: linear-gradient(120deg, rgba(0,121,151,1) 0%, rgba(140,90,139,1) 28%, rgba(255,64,129,1) 100%);
+    position: relative;
+    padding: 1px;
+    border-radius: 12px;
+} */
+.chart1-parent{
+    /* background-color: #1F2228; */
+}
+.chart1{
+    padding-top: 20px;
+    border-radius: 10px;
+    background: rgb(0,121,151);
+    background: linear-gradient(120deg, rgba(0,121,151,1) 0%, rgba(140,90,139,1) 28%, rgba(255,64,129,1) 100%);
+}
+
+.chart2{
+    padding-top: 20px;
+    border-radius: 10px;
+    background-color: #1F2228;
+}
+
+.chart2-parent{
+    background: rgb(0,121,151);
+    background: linear-gradient(120deg, rgba(255,64,129,1) 0%, rgba(140,90,139,1) 80%, rgba(0,121,151,1) 100%);
+}
+
+.custom{
+    color: #000;
+}
+
+
+

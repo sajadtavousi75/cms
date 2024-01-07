@@ -8,12 +8,14 @@ function App() {
   const router = useRoutes(routes)
 
   return (
-    <div className='body container bg-gradient-to-br from-darkbg  via-whitebg to-darkbg bg-fixed    flex'>
-      <div className='basis-1/4'>
+    <div className='body   bg-gradient-to-br from-darkbg  via-whitebg to-darkbg bg-fixed'>
+      <div className="container flex">
+      <div className='basis-1/5 '>
       <Sidebar />
       </div>
-      <div className="main basis-3/4">
+      <div className="main basis-4/5">
       {router}
+      </div>
       </div>
     </div>
   )

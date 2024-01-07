@@ -1,24 +1,167 @@
 import React from "react";
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import {
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
+
+import "./Charts.css";
+
+// interface CustomBarProps extends BarProps{
+//   x: number,
+//   y: number,
+//   width: number,
+//   height: number,
+//   fill: string,
+//   className: string
+// }
 
 export default function Charts() {
   const data = [
-    { name: "فروردین", uv: 4000, pv: 2400, amt: 2400 },
-    { name: "اردیبهشت", uv: 3000, pv: 1398, amt: 2210 },
-    { name: "خرداد", uv: 2000, pv: 9800, amt: 2290 },
+    { name: "jan", pv: 340 },
+    { name: "feb", pv: 500 },
+    { name: "mar", pv: 750 },
+    { name: "apr", pv: 640 },
+    { name: "may", pv: 365 },
+    { name: "jon", pv: 860 },
     // و داده‌های دیگر
   ];
+  const data2 = [
+    { name: "1 May", pv: 340 },
+    { name: "10 May", pv: 500 },
+    { name: "20 May", pv: 750 },
+    { name: "30 May", pv: 640 },
+    // و داده‌های دیگر
+  ];
+
+  const XAxisStyle = {
+    fill: "#F5F5F5",
+    font: "quickbold",
+    pink: "#FF4081",
+  };
+
+  const lineColor = "#FF4081";
   return (
-    <div className="charts">
-      <div className="h-[400px] w-[500px] border-solid border-2 border-pink">
-        <LineChart width={500} height={300} data={data}>
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-        </LineChart>
+    <div className="charts mt-8 flex items-center justify-between ">
+      <div className="chart1-parent w-[500px] h-[400px] border-solid border-[1px] border-pink rounded-[12px] bg-gradient-to-br from-darkbg  via-whitebg to-darkbg">
+        <div className="chart1 text-white">
+          <h1 className="font-quickb mb-5 text-lg ml-7">Sales ($)</h1>
+          <BarChart width={450} height={200} data={data}>
+            <XAxis
+              dataKey="name"
+              tick={{ fill: XAxisStyle.fill, fontFamily: XAxisStyle.font }}
+            />
+            <YAxis
+              dataKey="pv"
+              tick={{ fill: XAxisStyle.fill, fontFamily: XAxisStyle.font }}
+            />
+            <CartesianGrid
+              horizontal={true}
+              vertical={false}
+              strokeDasharray="3 3"
+            />
+            <Bar
+              className="group"
+              type="monotone"
+              dataKey="pv"
+              barSize={30}
+              fill="#F5F5F5"
+              radius={30}
+            />
+          </BarChart>
+        </div>
+        <div className="text flex items-center justify-around gap-2 mt-10">
+          <svg
+            width="46"
+            height="34"
+            viewBox="0 0 46 34"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M20.5219 0.553237C21.2704 1.2909 21.2704 2.48687 20.5219 3.22454L14.2106 9.44444H31.7894L25.4781 3.22454C24.7296 2.48687 24.7296 1.2909 25.4781 0.553237C26.2265 -0.184412 27.4401 -0.184412 28.1886 0.553237L37.2105 9.44444H44.0833C45.1419 9.44444 46 10.2901 46 11.3333C46 12.3765 45.1419 13.2222 44.0833 13.2222H43.7663L40.7915 29.3471C40.2943 32.0414 37.913 34 35.134 34H10.8659C8.08697 34 5.70572 32.0414 5.20862 29.3471L2.23372 13.2222H1.91667C0.85812 13.2222 0 12.3765 0 11.3333C0 10.2901 0.85812 9.44444 1.91667 9.44444H8.78943L17.8114 0.553237C18.5599 -0.184412 19.7735 -0.184412 20.5219 0.553237ZM6.1299 13.2222L8.98012 28.6713C9.14583 29.5694 9.93958 30.2222 10.8659 30.2222H35.134C36.0604 30.2222 36.8542 29.5694 37.0198 28.6713L39.8701 13.2222H6.1299ZM14.0599 17.0257C15.104 16.8542 16.0916 17.5493 16.2656 18.5784L17.2239 24.245C17.3979 25.2741 16.6926 26.2472 15.6484 26.4188C14.6043 26.5903 13.6168 25.8952 13.4428 24.8661L12.4844 19.1994C12.3104 18.1704 13.0158 17.1972 14.0599 17.0257ZM31.9401 17.0257C32.9843 17.1972 33.6896 18.1704 33.5156 19.1994L32.5573 24.8661C32.3832 25.8952 31.3958 26.5903 30.3516 26.4188C29.3074 26.2472 28.602 25.2741 28.7761 24.245L29.7344 18.5784C29.9084 17.5493 30.8959 16.8542 31.9401 17.0257ZM23 17C24.0586 17 24.9167 17.8457 24.9167 18.8889V24.5556C24.9167 25.5988 24.0586 26.4444 23 26.4444C21.9414 26.4444 21.0833 25.5988 21.0833 24.5556V18.8889C21.0833 17.8457 21.9414 17 23 17Z"
+              fill="#F5F5F5"
+            />
+          </svg>
+          <span className="text-white font-quickb text-xl">824</span>
+          <h1 className="text-white font-quickb text-xl">Over Last Month</h1>
+          <span className="text-green-500 font-quickb text-xl">2.4 % ^</span>
+        </div>
+      </div>
+      <div className="chart2-parent w-[500px] h-[400px] border-solid border-[1px] border-pink rounded-[12px] ">
+        <div className="chart2 bg-gradient-to-br from-darkbg  via-whitebg to-darkbg">
+          <h1 className=" font-quickb mb-5 text-lg ml-7 text-white">
+            Visiting Courses
+          </h1>
+          <LineChart className="" width={450} height={200} data={data2}>
+            <XAxis
+              dataKey="name"
+              tick={{ fill: XAxisStyle.fill, fontFamily: XAxisStyle.font }}
+            />
+            <YAxis
+              dataKey="pv"
+              tick={{ fill: XAxisStyle.fill, fontFamily: XAxisStyle.font }}
+            />
+            <Tooltip />
+            {/* <Legend /> */}
+            <CartesianGrid
+              horizontal={true}
+              vertical={false}
+              strokeDasharray="3 3"
+            />
+            <Line
+              className="group"
+              type="monotone"
+              dataKey="pv"
+              stroke={lineColor}
+              dot={false}
+              strokeWidth={2}
+            />
+          </LineChart>
+        </div>
+        <div className="text2 flex items-center justify-around gap-2 mt-10">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.80001 6.85722C5.68349 6.85722 6.43755 6.52252 7.06241 5.85285C7.68748 5.18322 8.00004 4.37507 8.00004 3.42868C8.00004 2.48238 7.68748 1.67423 7.06241 1.00451C6.43755 0.334884 5.68344 0 4.80001 0C3.91662 0 3.16251 0.334884 2.53752 1.00451C1.91258 1.67423 1.60002 2.48219 1.60002 3.42868C1.60002 4.37526 1.91258 5.18322 2.53752 5.85285C3.16251 6.52233 3.91662 6.85722 4.80001 6.85722Z"
+              fill="#F5F5F5"
+            />
+            <path
+              d="M8.60621 12.208C9.54371 13.2121 10.6748 13.7144 12 13.7144C13.3253 13.7144 14.4563 13.2121 15.3938 12.208C16.3311 11.2032 16.7999 9.99117 16.7999 8.5716C16.7999 7.15195 16.3311 5.93996 15.3938 4.93545C14.4563 3.93093 13.3253 3.42868 12 3.42868C10.6748 3.42868 9.54363 3.93103 8.60621 4.93545C7.66879 5.93982 7.19993 7.15181 7.19993 8.5716C7.19993 9.9914 7.66879 11.2033 8.60621 12.208Z"
+              fill="#F5F5F5"
+            />
+            <path
+              d="M19.2003 6.85722C20.0834 6.85722 20.8377 6.52252 21.4626 5.85285C22.0876 5.18322 22.3999 4.37507 22.3999 3.42868C22.3999 2.48238 22.0876 1.67423 21.4626 1.00451C20.8377 0.334884 20.0834 0 19.2003 0C18.3166 0 17.5626 0.334884 16.9376 1.00451C16.3128 1.67423 16.0003 2.48219 16.0003 3.42868C16.0003 4.37526 16.3128 5.18322 16.9376 5.85285C17.5626 6.52233 18.3166 6.85722 19.2003 6.85722Z"
+              fill="#F5F5F5"
+            />
+            <path
+              d="M22.4499 6.8574C22.4001 6.8574 22.2189 6.95118 21.9063 7.13867C21.594 7.32626 21.1876 7.51601 20.6877 7.70801C20.1879 7.89982 19.6918 7.99584 19.2003 7.99584C18.6418 7.99584 18.088 7.89325 17.5378 7.68779C17.5792 8.01798 17.6001 8.31271 17.6001 8.57165C17.6001 9.81272 17.2626 10.9555 16.5873 12.0002C17.9376 12.045 19.0415 12.6163 19.9002 13.7148H21.5751C22.2583 13.7148 22.8334 13.5336 23.3 13.1721C23.7666 12.8107 24 12.2815 24 11.5851C24.0001 8.43313 23.4837 6.85722 22.4499 6.8574Z"
+              fill="#F5F5F5"
+            />
+            <path
+              d="M20.5818 17.6853C20.4943 17.163 20.3837 16.6785 20.2504 16.2322C20.117 15.7856 19.9378 15.3506 19.7131 14.9264C19.488 14.5026 19.2296 14.1408 18.9379 13.8416C18.646 13.5423 18.2897 13.3038 17.869 13.125C17.4483 12.9464 16.9835 12.8572 16.4753 12.8572C16.3919 12.8572 16.2128 12.9532 15.9377 13.1452C15.6627 13.337 15.3588 13.5517 15.0253 13.788C14.6919 14.0243 14.2464 14.2387 13.6877 14.4307C13.129 14.6227 12.5666 14.7188 12.0002 14.7188C11.4336 14.7188 10.871 14.6227 10.3127 14.4307C9.75417 14.2387 9.30847 14.0243 8.97512 13.788C8.64167 13.5517 8.3376 13.337 8.06265 13.1452C7.78757 12.9532 7.6085 12.8572 7.52505 12.8572C7.01679 12.8572 6.55221 12.9464 6.13134 13.125C5.71046 13.3038 5.35425 13.5423 5.06261 13.8416C4.77072 14.1405 4.51262 14.5026 4.28745 14.9264C4.06254 15.3506 3.88339 15.7856 3.75003 16.2322C3.61671 16.6785 3.50642 17.163 3.41877 17.6853C3.33121 18.2077 3.27293 18.6941 3.24377 19.1452C3.21457 19.5961 3.20003 20.0583 3.20003 20.5315C3.20003 21.6028 3.5041 22.4489 4.11241 23.0692C4.72094 23.6895 5.52933 24 6.53746 24H17.4626C18.4708 24 19.2791 23.6895 19.8878 23.0692C20.4961 22.4489 20.8003 21.6028 20.8003 20.5315C20.8003 20.0583 20.7856 19.5963 20.7568 19.1452C20.7272 18.6941 20.669 18.2077 20.5818 17.6853Z"
+              fill="#F5F5F5"
+            />
+            <path
+              d="M7.41244 12.0001C6.73741 10.9555 6.39998 9.81268 6.40011 8.5716C6.40011 8.31266 6.421 8.01812 6.46259 7.68774C5.91251 7.89306 5.35836 7.99579 4.80001 7.99579C4.30834 7.99579 3.81263 7.89982 3.31256 7.70796C2.81269 7.51596 2.40631 7.32621 2.09392 7.13862C1.78141 6.95113 1.60002 6.85736 1.55006 6.85736C0.516673 6.8574 0 8.43331 0 11.5851C0 12.2814 0.233359 12.8107 0.699945 13.172C1.16666 13.5336 1.7417 13.7144 2.42483 13.7144H4.09993C4.95837 12.6162 6.06238 12.0449 7.41244 12.0001Z"
+              fill="#F5F5F5"
+            />
+          </svg>
+          <span className="text-white font-quickb text-xl">1023</span>
+          <h1 className="text-white font-quickb text-xl">Users Have Registred</h1>
+        </div>
       </div>
     </div>
   );
